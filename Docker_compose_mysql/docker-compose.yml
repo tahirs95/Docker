@@ -1,0 +1,17 @@
+version: "2"
+services:
+  app:
+    build: ./app
+    links:
+      - db
+    ports:
+      - "5000:5000"
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - C:\Users\tahir.shaukat\Desktop\NLP_SPACY\Docker_mysql\db:/app
+    command: mysqld --init-file="/app/init.sql"
